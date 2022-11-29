@@ -6,7 +6,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "DOCKER_HOST=\"ssh://SSH_HOST\" docker-compose down; DOCKER_HOST=\"ssh://SSH_HOST\" docker-compose up -d",
+    "deploy": "DOCKER_HOST=\"ssh://ndl\" docker-compose down; DOCKER_HOST=\"ssh://ndl\" docker-compose up -d",
     "compose": "docker-compose down; docker-compose up -d"
   },
   "devDependencies": {

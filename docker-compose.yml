@@ -4,7 +4,7 @@ services:
   frontend:
     container_name: "frontend"
     environment:
-      - VIRTUAL_HOST=FRONTEND_URL
+      - VIRTUAL_HOST=upssisomniaques.fr
 
     build: .
     networks:
@@ -14,7 +14,7 @@ services:
   backend:
     container_name: "backend"
     environment:
-      - VIRTUAL_HOST=BACKEND_URL
+      - VIRTUAL_HOST=api.upssisomniaques.fr
 
     image: "augustodelg/pocketbase"
     volumes:
@@ -58,8 +58,8 @@ services:
     image: tutum/apache-php
     container_name: certs
     environment:
-      - VIRTUAL_HOST=URL_LIST
-      - LETSENCRYPT_HOST=URL_LIST
+      - VIRTUAL_HOST=upssisomniaques.fr,www.upssisomniaques.fr,api.upssisomniaques.fr
+      - LETSENCRYPT_HOST=upssisomniaques.fr,www.upssisomniaques.fr,api.upssisomniaques.fr
       - LETSENCRYPT_EMAIL=guillaume.roussin44@gmail.com
     networks:
       - cert_net
