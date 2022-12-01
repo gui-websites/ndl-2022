@@ -4,11 +4,23 @@ class historyTree {
 
   //created by reverse order
   createHistoryTree() {
+    // Boire un verre
+
+    // Passer directement aux choses serieuses
+
     // Enfin chez elle
-    let aSonAppart = new Scene("Enfin chez elle", [], null, null, []);
+    let aSonAppart = new Scene(
+      "Enfin chez elle",
+      [
+        "Vous arrivez enfin chez elle. Tu enlève ta veste, elle la sienne. Vous vous posez sur le canapé.",
+      ],
+      null,
+      null,
+      []
+    );
 
     //choix continuer
-    let choixContinuerChezElle = new Choice("Continuer", null, null, []);
+    let choixContinuerChezElle = new Choice("Continuer", aSonAppart, null, []);
 
     let SceneFilleRassurer = new Scene(
       "Rassurer",
