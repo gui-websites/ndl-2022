@@ -25,9 +25,9 @@ class historyTree {
     let SceneFilleRassurer = new Scene(
       "Rassurer",
       [
-        "Tu prend Sandra par l'épaule et presse le pas. ",
-        "Tu la rassure immédiatement, tu lui dit qu'il ne va pas l'approché, et de ne pas faire attention à ce connard d'ivrogne.",
-        "Une fois avoir mis une saine distance avec cet inconnu, Sandra se blotti doucement contre toi en souriant. Vous arrivez bientot chez elle.",
+        "Tu prends Sandra par l'épaule et presse le pas. ",
+        "Tu la rassure immédiatement, tu lui explique qu'elle est en sécurité avec toi et qu'elle ne craint rien",
+        "Sandra se blottit doucement contre toi en souriant. Vous arrivez bientôt chez elle.",
       ],
       null,
       null,
@@ -37,9 +37,8 @@ class historyTree {
     let SceneFilleInquiette = new Scene(
       "FilleInquiete",
       [
-        "Tu ignore l'ivrogne et presse le pas. C'est pas comme si tu allais lui casser la figure de toute façon.",
-        "Tu jette un oeil à Sandra. Elle semble même troublé par les provocations de l'autre imbécile, et surtout tu a l'impression qu'elle attendait quelque chose de toi.",
-        "Quand elle sort ses clés en silence, tu comprend que vous êtes bientot arrivés.",
+        "Tu attrapes Sandra par le bras et l'éloigne de lui. Tu n'as pas envie de perdre ton temps à te battre, une meilleure soirée t'attends ",
+        "Quand elle sort ses clés en silence, tu te réjouis que vous soyez bientôt arrivés.",
       ],
       null,
       null,
@@ -52,7 +51,7 @@ class historyTree {
 
     // choix ignorer
     let choixIgnorer = new Choice(
-      "Ignorer l'ivrogne",
+      "Tu l'ignore et commence à t'éloigner, Sandra te suis, tu ne fais aucune remarque ",
       SceneFilleInquiette,
       null,
       []
@@ -62,13 +61,12 @@ class historyTree {
     let sceneDansLaRue = new Scene(
       "Dans la rue",
       [
-        "Vous marchez depuis maintenant quelques minutes. Sur le trottoir d'en face, un homme visiblement très éméché se tourne vers vous.",
-        "En voyant la fille avec qui tu es, il commence à la siffler. Vous ne comprenez pas vraiment ce qu'il dit tant il braille plus qu'il ne parle.",
-        "Néhamoins, ses propos sont très clairement obscènes et assez explicite. Il titube doucement dans votre direction.",
-        "Sandra est très perturbé par cet énergumène, surtout quand il commence à mimer ce que vous allez faire tout les deux en rigolant grassement.",
+        "Vous marchez depuis maintenant quelques minutes. Sur le trottoir d'en face, un homme qui n'a pas les idées claires se tourne vers vous.",
+        "Il te demande si la jeune demoiselle qui t'accompagne est ta copine. Tu réponds naturellement que non, ce qui lui laisse croire qu'il peut grossièrement la draguer.",
+        "Il ne se prive pas.",
       ],
       null,
-      null,
+      "Comment réagis-tu ?",
       [rassurer, choixIgnorer]
     );
     this.listOfScenes.push(sceneDansLaRue);
@@ -85,9 +83,8 @@ class historyTree {
     let scenePharmacie = new Scene(
       "Pharmacie",
       [
-        "Tu fais demi-tour et entre dans la pharmacie. Elle t'attend à l'exterieur en observant les alentours d'un regard inquiet.",
-        "Elle n'est pas très à l'aise, et toi non plus.",
-        "Tu trouve rapidement les présevatifs, te dépèche de payer et de la cacher dans ta poche.",
+        "Vous rentrez dans la pharmacie. Vous vous sentez mal à l'aise mais tu ressens qu'elle aprécie que tu sois prévoyant.",
+        "Néamoins, tu te dépèches de payer et de cacher tes achats dans tes poches.",
       ],
       null,
       null,
@@ -99,8 +96,8 @@ class historyTree {
     let sceneEpicerie = new Scene(
       "Epicerie",
       [
-        "Vous entrez tout les deux dans l'épicerie. Le sourir au lèvre, vous vous mettez d'accord pour une bouteille de Jeager avec un regard complice.",
-        "A la caisse, Sandra éclate de rire à l'idée de cette achat irraisonnable, et en sortant, tu ne peux pas t'empecher de rire aussi. La soirée est décidement parfaite !",
+        "Vous entrez tout les deux dans l'épicerie. Le sourir au lèvre, vous vous mettez d'accord pour une bouteille de vin avec un regard complice.",
+        "A la caisse, Sandra éclate de rire à l'idée de cet achat irraisonnable, et en sortant, tu ne peux pas t'empecher de rire aussi. La soirée est décidement parfaite !",
       ],
       null,
       null,
@@ -110,7 +107,7 @@ class historyTree {
 
     // Aller à la Pharmacie
     let allerPharmacie = new Choice(
-      "Aller acheter des préservatifs",
+      "Tu t'arrêtes à la pharmacie acheter des préservatifs",
       scenePharmacie,
       null,
       null
@@ -118,7 +115,7 @@ class historyTree {
 
     // Aller acheter de l'alchool
     let allerEpicerie = new Choice(
-      "Mon royaume pour une bouteille !!!",
+      "Tu ne réflechis même pas une seconde, tu la prends par la main et l'emmène dans l'épicerie",
       sceneEpicerie,
       null,
       null
@@ -128,13 +125,13 @@ class historyTree {
     let sortieBarScene = new Scene(
       "sortieBar",
       [
-        "Vous sortez du bar tout les deux. Dehors, il fait un peu frais, et surtout très sombre. Les lampadaires éclairent la rue.",
-        "Elle commence à vous emmener chez elle. Un peu plus loin dans cette direction, mais de l'autre coté de la rue,",
-        "tu appercois une épicerie encore ouverte qui scintille de bouteille rempli de promesses.",
-        "Dans l'autre direction, à coté du bar maintenant derière vous, tu repère aussi une pharmacie.",
+        "Vous sortez du bar tous les deux. Dehors, il fait un peu frais, et surtout très sombre. Seuls de faibles lampadaires éclairent la rue.",
+        "Un peu plus loin, en direction de son appartement",
+        "tu appercois une épicerie de nuit qui scintille de bouteilles remplies de promesses.",
+        "De l'autre coté de la rue, tu repères aussi une pharmacie, et tu n'as pas de moyen de contraception sur toi...",
       ],
       null,
-      "Tu hésite un instant. Mais Sandra semble ne pas vouloir s'attarder dans la rue.",
+      "Tu hésites un instant. Mais Sandra semble ne pas vouloir s'attarder dans la rue.",
       [allerPharmacie, allerEpicerie, allerChezElle]
     );
     this.listOfScenes.push(sortieBarScene);
@@ -148,7 +145,7 @@ class historyTree {
     );
 
     let sortirDuBar2 = new Choice(
-      "Ne soit pas bête, bien sur que tu la suit !",
+      "Ne sois pas bête, bien sûr que tu la suis !",
       sortieBarScene,
       null,
       null
@@ -158,8 +155,8 @@ class historyTree {
     let InitScene = new Scene(
       "InitScene",
       [
-        "Cette soirée c'est jusqu'ici passé à merveille. Tu t'es bien amusé avec tes amis, et il n'est pas encore trop tard.",
-        "Tu a rencontré une fille plutot sympa en début de soirée, Sandra, et elle s'avère encore plus irrésitible après quelques bières.",
+        "Cette soirée s'est jusqu'ici passée à merveille. Tu t'es bien amusé avec tes amis, et il n'est pas encore trop tard.",
+        "Tu a rencontré une fille irresistible et très sympa en début de soirée, Sandra, avec laquelle tu as partagé quelques verres.",
         "Ca tombe bien, tu semble l'interrésser aussi...",
         "Alors que tu t'appretais à recommander pour vous deux, elle te propose de plutot prendre ce dernier verre chez elle.",
       ],
