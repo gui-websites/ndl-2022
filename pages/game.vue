@@ -1,8 +1,8 @@
 <template>
   <!-- bg -->
   <div class="custom-bg h-full w-full">
-    <img src="~/assets/img/dude.png" class="person left-2 md:left-1/4" />
-    <img src="~/assets/img/gal.png" class="person right-2 md:right-1/4" />
+    <img src="/img/dude.png" class="person left-2 md:left-1/4" />
+    <img src="/img/gal.png" class="person right-2 md:right-1/4" />
   </div>
 
   <!-- inventory -->
@@ -19,7 +19,7 @@ import VueFeather from "vue-feather";
 <style>
 .custom-bg {
   @apply bg-cover bg-center bg-no-repeat;
-  background-image: url("~/assets/img/pharmacie.jpeg");
+  background-image: url("/img/pharmacie.jpeg");
 }
 
 .person {
