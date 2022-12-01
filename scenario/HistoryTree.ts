@@ -147,6 +147,13 @@ class historyTree {
       null
     );
 
+    let sortirDuBar2 = new Choice(
+      "Ne soit pas bête, bien sur que tu la suit !",
+      sortieBarScene,
+      null,
+      null
+    );
+
     // Scene à l'interieur du bar
     let InitScene = new Scene(
       "InitScene",
@@ -158,7 +165,7 @@ class historyTree {
       ],
       null,
       "",
-      [sortirDuBar]
+      [sortirDuBar, sortirDuBar2]
     );
     this.listOfScenes.push(InitScene);
   }
