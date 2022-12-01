@@ -10,23 +10,7 @@ module.exports = {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
 
-      colors: {
-        white: css("white"),
-        gray: css("gray"),
-
-        black: {
-          DEFAULT: css("black"),
-          dark: css("dark-black"),
-        },
-
-        primary: {
-          DEFAULT: css("primary"),
-          light: css("primary-light"),
-          dark: css("primary-dark"),
-        },
-
-        error: css("error"),
-      },
+      colors: {},
     },
   },
   plugins: [],

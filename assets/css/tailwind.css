@@ -6,6 +6,6 @@
   html,
   body,
   #__nuxt {
-    @apply h-full font-sans;
+    @apply h-full w-full font-sans;
   }
 }
