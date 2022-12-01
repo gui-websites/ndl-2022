@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute inset-x-0 bottom-0 z-50 h-60 border-t-8 border-t-neutral-300 bg-black bg-opacity-60"
+    class="absolute inset-x-0 bottom-0 h-60 border-t-8 border-t-neutral-900 bg-black bg-opacity-60"
   >
     <!-- TODO: Noé add bar stuff -->
   </div>

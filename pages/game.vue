@@ -5,8 +5,11 @@
     <img src="~/assets/img/gal.png" class="person right-2 md:right-1/4" />
   </div>
 
+  <!-- inventory -->
+  <Inventory class="absolute top-8 right-8" />
+
   <!-- bar -->
-  <Bar />
+  <Bar class="absolute inset-x-0 bottom-0" />
 </template>
 
 <script setup lang="ts">
