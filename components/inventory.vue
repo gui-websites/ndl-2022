@@ -4,7 +4,7 @@
     class="absolute top-8 right-8 cursor-pointer rounded-lg border-4 border-neutral-900 bg-neutral-800 p-4"
     @click="show_modal = true"
   >
-    <img src="/img/bag.png" class="aspect-square w-16" />
+    <img src="/img/items/sac.png" class="aspect-square w-16" />
   </div>
 
   <!-- Modal -->
@@ -18,10 +18,16 @@
       <div class="w-7/12 p-4">
         <h1 class="mb-4">Mon inventaire</h1>
         <div class="grid grid-cols-5 gap-6">
-          <Item v-for="i in new Array(9)" type="capote" :count="15" />
+          <Item
+            v-for="item in game_tracker.getInventory()"
+            :type="item.type"
+            :count="item.count"
+          />
         </div>
       </div>
-      <div class="h-full w-5/12 bg-neutral-900"></div>
+      <div class="grid h-full w-5/12 place-items-center bg-neutral-900">
+        <Person type="guy" class="relative" />
+      </div>
       <vue-feather
         type="x"
         size="24"
@@ -34,6 +40,10 @@
 
 <script setup lang="ts">
 import VueFeather from "vue-feather";
+import game_tracker from "~/composables/game-tracker";
+
+game_tracker.addItem("capote", 3);
+game_tracker.addItem("pq", 5);
 
 const show_modal = ref(false);
 </script>

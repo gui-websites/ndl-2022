@@ -1,8 +1,8 @@
 <template>
   <!-- bg -->
   <div class="custom-bg h-full w-full">
-    <img src="/img/dude.png" class="person left-2 md:left-1/4" />
-    <img src="/img/gal.png" class="person right-2 md:right-1/4" />
+    <Person :type="scene.people.left" class="left-2 md:left-1/4" />
+    <Person :type="scene.people.right" class="right-2 md:right-1/4" />
   </div>
 
   <!-- inventory -->
@@ -14,15 +14,20 @@
 
 <script setup lang="ts">
 import VueFeather from "vue-feather";
+import game_tracker from "~/composables/game-tracker";
+// import HistoryTree from "~/scenario/HistoryTree";
+
+// const tree = new HistoryTree();
+// tree.createHistoryTree();
+
+// const scene = tree.listOfScenes[0];
+
+const scene = game_tracker.getSceneManager().getScene();
 </script>
 
 <style>
 .custom-bg {
   @apply bg-cover bg-center bg-no-repeat;
   background-image: url("/img/pharmacie.jpeg");
-}
-
-.person {
-  @apply absolute bottom-0 h-4/6 md:h-3/4;
 }
 </style>
