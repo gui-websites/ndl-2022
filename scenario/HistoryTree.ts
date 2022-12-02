@@ -125,7 +125,10 @@ export default class historyTree {
 
     let sceneRentrerMaison = new Scene(
       "rentrer à la maison",
-      ["Rentre chez toi, garde le numéro, peut être une autre fois"],
+      [
+        "L’ambiance n’est pas au top avec Sandra… À cause d'une ou plusieurs mauvaises actions, elle est très froide avec toi.",
+        "Tu décides alors de rentrer chez toi. C’était le meilleur choix à faire.",
+      ],
       null,
       null,
       []
