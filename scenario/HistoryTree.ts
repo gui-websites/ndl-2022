@@ -5,9 +5,9 @@ class historyTree {
   //created by reverse order
   createHistoryTree() {
     //scenes finales
-    let sceneGoodEnd = new Scene("bonne fin", [], null, null, []);
-    let sceneMST = new Scene("mst", [], null, null, []);
-    let sceneEnceinte = new Scene("enceinte", [], null, null, []);
+    let sceneGoodEnd = new Scene("bonne fin", ["==="], null, null, []);
+    let sceneMST = new Scene("mst", ["==="], null, null, []);
+    let sceneEnceinte = new Scene("enceinte", ["==="], null, null, []);
 
     // forcer
     let sceneForcer = new Scene("forcer", ["forcer"], null, null, []);
@@ -25,20 +25,34 @@ class historyTree {
     let transitionEnceinte = new Choice("Continuer", sceneEnceinte, null, null);
 
     //scene "bon comportement"
-    let sceneFinSoireeBien1 = new Scene("bon comportement", [], null, null, [
-      transitionGoodEnding,
-    ]);
-    let sceneFinSoireeBien2 = new Scene("bon comportement", [], null, null, [
-      transitionMST,
-    ]);
-    let sceneFinSoireeBien3 = new Scene("bon comportement", [], null, null, [
-      transitionEnceinte,
-    ]);
+    let sceneFinSoireeBien1 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionGoodEnding]
+    );
+
+    let sceneFinSoireeBien2 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionMST]
+    );
+
+    let sceneFinSoireeBien3 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionEnceinte]
+    );
 
     // scene "se bourrer la gueule"
     let sceneFinSoireeBourre = new Scene(
       "se bourrer la gueule",
-      [],
+      ["==="],
       null,
       null,
       []
@@ -166,9 +180,15 @@ class historyTree {
       choixForcer,
     ]);
 
+    let transitionBourré = new Choice(
+      "Continuer",
+      sceneFinSoireeBourre,
+      null,
+      null
+    );
     // scene boire beaucoup
     let sceneBoireBeaucoup = new Scene("boire beaucoup", [], null, null, [
-      transitionMST,
+      transitionBourré,
     ]);
 
     //se bourrer la geule parce que c'est pas génial
