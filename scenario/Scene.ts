@@ -26,4 +26,8 @@ class Scene {
     this.explicationText = explicationText;
     this.choices = choices;
   }
+
+  getChoices(): Choice[] {
+    return this.choices;
+  }
 }

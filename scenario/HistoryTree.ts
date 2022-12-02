@@ -4,15 +4,72 @@ class historyTree {
 
   //created by reverse order
   createHistoryTree() {
-    // Boire un verre
+    //scenes finales
+    let sceneGoodEnd = new Scene("bonne fin", ["==="], null, null, []);
+    let sceneMST = new Scene("mst", ["==="], null, null, []);
+    let sceneEnceinte = new Scene("enceinte", ["==="], null, null, []);
 
-    // Passer directement aux choses serieuses
+    // forcer
+    let sceneForcer = new Scene("forcer", ["forcer"], null, null, []);
 
-    // Enfin chez elle
-    let aSonAppart = new Scene(
-      "Enfin chez elle",
+    //transition finales
+    let transitionGoodEnding = new Choice(
+      "Continuer",
+      sceneGoodEnd,
+      null,
+      null
+    );
+
+    let transitionMST = new Choice("Continuer", sceneMST, null, null);
+
+    let transitionEnceinte = new Choice("Continuer", sceneEnceinte, null, null);
+
+    //scene "bon comportement"
+    let sceneFinSoireeBien1 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionGoodEnding]
+    );
+
+    let sceneFinSoireeBien2 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionMST]
+    );
+
+    let sceneFinSoireeBien3 = new Scene(
+      "bon comportement",
+      ["==="],
+      null,
+      null,
+      [transitionEnceinte]
+    );
+
+    // scene "se bourrer la gueule"
+    let sceneFinSoireeBourre = new Scene(
+      "se bourrer la gueule",
+      ["==="],
+      null,
+      null,
+      []
+    );
+
+    let sceneRentrerMaison = new Scene(
+      "rentrer à la maison",
+      ["Rentre chez toi, garde le numéro, peut être une autre fois"],
+      null,
+      null,
+      []
+    );
+
+    let sceneInsistePassePasBien = new Scene(
+      "insiste",
       [
-        "Vous arrivez enfin chez elle. Tu enlève ta veste, elle la sienne. Vous vous posez sur le canapé.",
+        "Insiste encore un peu mais c'est nul. Doivent arreter et part en mauvais termes",
       ],
       null,
       null,
@@ -20,8 +77,180 @@ class historyTree {
     );
 
     //choix continuer
-    let choixContinuerChezElle = new Choice("Continuer", aSonAppart, null, []);
+    let choixInsister = new Choice(
+      "Essayer de continuer quand même",
+      sceneInsistePassePasBien,
+      null,
+      null
+    );
 
+    //choix arreter
+    let choixArreter = new Choice("Arrêter", sceneRentrerMaison, null, null);
+
+    //scene "mauvais comportement"
+    let scenePassePasBien = new Scene(
+      "Passe pas bien",
+      ["Elle le sent pas, arrete ou pas ?"],
+      null,
+      null,
+      [choixArreter, choixInsister]
+    );
+
+    let choixPortectionCapote = new Choice(
+      "Met préservatif",
+      sceneFinSoireeBien1,
+      null,
+      null
+    );
+
+    let choixPillule = new Choice(
+      "Elle prend la pillule",
+      sceneFinSoireeBien2,
+      null,
+      null
+    );
+
+    let choixProfiterToutDeSuite = new Choice(
+      "Profiter tout de suite",
+      sceneFinSoireeBien3,
+      null,
+      null
+    );
+
+    let choixProtectionCapoteMal = new Choice(
+      "Met préservatif",
+      scenePassePasBien,
+      null,
+      null
+    );
+
+    let choixPilluleMal = new Choice(
+      "Elle prend la pillule",
+      scenePassePasBien,
+      null,
+      null
+    );
+
+    let choixProfiterToutDeSuiteMal = new Choice(
+      "Profiter tout de suite",
+      scenePassePasBien,
+      null,
+      null
+    );
+
+    // scene boit pas commence à s'amuser
+    let sceneCommenceBien = new Scene(
+      "commenceBien",
+      ["commenceBien"],
+      null,
+      null,
+      [choixPortectionCapote, choixPillule, choixProfiterToutDeSuite]
+    );
+
+    // scene boit puis commence à s'amuser
+    let sceneBoirePuisCommencer = new Scene(
+      "boirePuisCommencer",
+      ["boirePuisCommencer"],
+      null,
+      null,
+      [choixProtectionCapoteMal, choixPilluleMal, choixProfiterToutDeSuiteMal]
+    );
+
+    // choix Boire un verre d'abord
+    let choixBoireUnVerre = new Choice(
+      "Boire un verre",
+      sceneBoirePuisCommencer,
+      null,
+      null
+    );
+
+    // choix Passer directement aux choses serieuses
+    let choixPasserAuxChosesSerieuses = new Choice(
+      "Passer directement aux choses serieuses",
+      sceneCommenceBien,
+      null,
+      null
+    );
+
+    let choixForcer = new Choice("Forcer", sceneForcer, null, null);
+
+    // scene elle a pas envie
+    let sceneElleAPasEnvie = new Scene("elle a pas envie", [], null, null, [
+      choixArreter,
+      choixForcer,
+    ]);
+
+    let transitionBourré = new Choice(
+      "Continuer",
+      sceneFinSoireeBourre,
+      null,
+      null
+    );
+    // scene boire beaucoup
+    let sceneBoireBeaucoup = new Scene("boire beaucoup", [], null, null, [
+      transitionBourré,
+    ]);
+
+    //se bourrer la geule parce que c'est pas génial
+    let choixBoireQuelquesVerres = new Choice(
+      "Boire quelques verres",
+      sceneBoireBeaucoup,
+      null,
+      null
+    );
+
+    //ça se passe pas super bien mais essayer quand même
+    let choixPasBoire = new Choice(
+      "Ne pas boire",
+      sceneElleAPasEnvie,
+      null,
+      null
+    );
+
+    // Enfin chez elle
+    let aSonAppartBien = new Scene(
+      "Enfin chez elle",
+      [
+        "S'installe chez elle",
+        "Se met confortable",
+        "boit un verre comme convenu ou passe directement aux choses serieuses",
+      ],
+      null,
+      null,
+      [choixBoireUnVerre, choixPasserAuxChosesSerieuses]
+    );
+    this.listOfScenes.push(aSonAppartBien);
+
+    // Enfin chez elle
+    let aSonAppartMal = new Scene(
+      "Enfin chez elle",
+      [
+        "S'installe chez elle",
+        "Elle est pas trop entousiaste",
+        "boit un peu pour détendre l'atmosphère",
+        "essayer de faire quand même ce qui était prévu",
+      ],
+      null,
+      null,
+      [choixBoireQuelquesVerres, choixPasBoire]
+    );
+    this.listOfScenes.push(aSonAppartMal);
+
+    //arrive chez elle, c'est bien partit
+    let choixContinuerChezElleBien = new Choice(
+      "Continuer",
+      aSonAppartBien,
+      null,
+      []
+    );
+
+    //arrive chez elle mais c'est mal partit
+    let choixContinuerChezElleMal = new Choice(
+      "Continuer",
+      aSonAppartMal,
+      null,
+      []
+    );
     let SceneFilleRassurer = new Scene(
       "Rassurer",
       [
@@ -31,7 +260,7 @@ class historyTree {
       ],
       null,
       null,
-      [choixContinuerChezElle]
+      [choixContinuerChezElleBien]
     );
 
     let SceneFilleInquiette = new Scene(
@@ -42,7 +271,7 @@ class historyTree {
       ],
       null,
       null,
-      [choixContinuerChezElle]
+      [choixContinuerChezElleMal]
     );
     this.listOfScenes.push(SceneFilleInquiette);
 
