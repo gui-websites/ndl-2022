@@ -9,8 +9,8 @@ export default class historyTree {
       "bonne fin",
       [
         "Deux semaines plus tard, tu recroises Sandra dans un parc près de chez toi. Elle te salue et te sourit.",
-        " Tu t’approches et vous commencez à discuter. Elle semble heureuse de te revoir et te remercie pour la magnifique soirée que vous avez passé ensembles.",
-        " Elle serait ravie de te revoir chez elle une prochaine fois.",
+        "Tu t’approches et vous commencez à discuter. Elle semble heureuse de te revoir et te remercie pour la magnifique soirée que vous avez passé ensembles.",
+        "Elle serait ravie de te revoir chez elle une prochaine fois.",
       ],
       null,
       null,
@@ -22,8 +22,8 @@ export default class historyTree {
       "mst",
       [
         "Suite à plusieurs symptômes étranges, tu décides d’aller chez le médecin.",
-        " En arrivant, ce dernier te fait passer des tests avant de t’annoncer la mauvaise nouvelle : Tu as attrapé le SIDA.",
-        " La prochaine fois, pense à te protéger, notamment en emmenant avec toi une préservatif !",
+        "En arrivant, ce dernier te fait passer des tests avant de t’annoncer la mauvaise nouvelle : Tu as attrapé le SIDA.",
+        "La prochaine fois, pense à te protéger, notamment en emmenant avec toi une préservatif !",
       ],
       null,
       null,
@@ -35,7 +35,7 @@ export default class historyTree {
       "enceinte",
       [
         "Trois semaines plus tard, Sandra t'appelle pour t’annoncer la grande nouvelle : tu vas être Papa ! Quoi ? Tu ne voulais pas être Papa à ton âge ?",
-        " Eh bien la prochaine pense à utiliser des moyens de contraceptions comme le préservatif ou la pilule contraceptive.",
+        "Eh bien la prochaine pense à utiliser des moyens de contraceptions comme le préservatif ou la pilule contraceptive.",
       ],
       null,
       null,
@@ -48,7 +48,7 @@ export default class historyTree {
       "forcer",
       [
         "Suite à une dispute, Sandra te vire de son appartement. La raison de cette dispute, tu as essayé de la forcer à coucher avec toi.",
-        " Ceci est considéré comme du harcèlement sexuel. Nous te rappelons que ce comportement est prohibé et inacceptable.",
+        "Ceci est considéré comme du harcèlement sexuel. Nous te rappelons que ce comportement est prohibé et inacceptable.",
       ],
       null,
       null,
@@ -64,6 +64,8 @@ export default class historyTree {
       null
     );
 
+    let choixForcer = new Choice("Forcer", sceneForcer, null, null);
+
     let transitionMST = new Choice("Continuer", sceneMST, null, null);
 
     let transitionEnceinte = new Choice("Continuer", sceneEnceinte, null, null);
@@ -71,7 +73,10 @@ export default class historyTree {
     //scene "bon comportement"
     let sceneFinSoireeBien1 = new Scene(
       "bon comportement",
-      ["==="],
+      [
+        "Tu as fait le bon choix, le préservatif est le meilleur moyen de se protéger des IST !!!! Vous pouvez avoir un rapport l’esprit tranquille.",
+        "Vous passez une fin de soirée enflammée avant de vous endormir l’un contre l’autre. Le lendemain, tu rentres chez toi, ravi de ta soirée.",
+      ],
       null,
       null,
       [transitionGoodEnding]
@@ -80,7 +85,11 @@ export default class historyTree {
 
     let sceneFinSoireeBien2 = new Scene(
       "bon comportement",
-      ["==="],
+      [
+        "Avant de vous précipiter, tu lui demandes si elle prend la pilule, ce à quoi elle te répond positivement.",
+        "Ta question lui rappelle qu’il est l’heure de la prendre et elle la prend devant toi.",
+        "Vous passez une fin de soirée enflammée avant de vous endormir l’un contre l’autre. Le lendemain, tu rentres chez toi, ravi de ta soirée.",
+      ],
       null,
       null,
       [transitionMST]
@@ -89,7 +98,10 @@ export default class historyTree {
 
     let sceneFinSoireeBien3 = new Scene(
       "bon comportement",
-      ["==="],
+      [
+        "Dans le feu de l’action, vous décidez d’entreprendre la suite sans prendre aucune précaution.",
+        "Vous passez une fin de soirée enflammée avant de vous endormir l’un contre l’autre. Le lendemain, tu rentres chez toi, ravi de ta soirée.",
+      ],
       null,
       null,
       [transitionEnceinte]
@@ -123,11 +135,11 @@ export default class historyTree {
     let sceneInsistePassePasBien = new Scene(
       "insiste",
       [
-        "Insiste encore un peu mais c'est nul. Doivent arreter et part en mauvais termes",
+        "Tu insistes fortement pour que la soirée se poursuive dans la chambre à coucher. Peut-être même un peu trop au gout de Sandra …",
       ],
       null,
       null,
-      []
+      [choixForcer]
     );
     this.listOfScenes.push(sceneInsistePassePasBien);
 
@@ -145,7 +157,10 @@ export default class historyTree {
     //scene "mauvais comportement"
     let scenePassePasBien = new Scene(
       "Passe pas bien",
-      ["Elle le sent pas, arrete ou pas ?"],
+      [
+        "Tu as trop bu, ça risque de dégénérer et tu n’es plus trop maitre de tes moyens. Malgré cela, tout se passe bien avec Sandra, elle est prête à passer aux choses sérieuses.",
+        "Est-ce une bonne idée d’aller plus loin ?",
+      ],
       null,
       null,
       [choixArreter, choixInsister]
@@ -199,7 +214,7 @@ export default class historyTree {
       "commenceBien",
       [
         "Après ce bon début de soirée avec Sandra, tu décides de ne pas boire en arrivant chez elle.",
-        " Vous passez directement aux choses sérieuses !!",
+        "Vous passez directement aux choses sérieuses !!",
       ],
       null,
       null,
@@ -236,13 +251,17 @@ export default class historyTree {
       null
     );
 
-    let choixForcer = new Choice("Forcer", sceneForcer, null, null);
-
     // scene trop alcolisé, ça se passe pas bien
-    let sceneElleAPasEnvie = new Scene("elle a pas envie", [], null, null, [
-      choixArreter,
-      choixForcer,
-    ]);
+    let sceneElleAPasEnvie = new Scene(
+      "elle a pas envie",
+      [
+        "Tu insistes fortement pour que la soirée se poursuive dans la chambre à coucher.",
+        "Peut-être même un peu trop au gout de Sandra …",
+      ],
+      null,
+      null,
+      [choixArreter, choixForcer]
+    );
     this.listOfScenes.push(sceneElleAPasEnvie);
 
     let transitionBourré = new Choice(
@@ -285,7 +304,7 @@ export default class historyTree {
       "Enfin chez elle",
       [
         "Tu as gagné de bons points auprès de Sandra ! Après l’avoir défendu dans la rue, elle se sent rassurer avec toi !",
-        " Cela promet une bonne soirée. J’espère que tu n’as pas oublié le préservatif !",
+        "Cela promet une bonne soirée. J’espère que tu n’as pas oublié le préservatif !",
       ],
       null,
       null,
@@ -380,6 +399,7 @@ export default class historyTree {
     );
 
     // Scene Pharmacie
+
     let scenePharmacie = new Scene(
       "Pharmacie",
       [
@@ -452,6 +472,7 @@ export default class historyTree {
     );
 
     // Scene à l'interieur du bar
+
     let InitScene = new Scene(
       "InitScene",
       [
