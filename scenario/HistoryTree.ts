@@ -9,6 +9,9 @@ class historyTree {
     let sceneMST = new Scene("mst", [], null, null, []);
     let sceneEnceinte = new Scene("enceinte", [], null, null, []);
 
+    // forcer
+    let sceneForcer = new Scene("forcer", ["forcer"], null, null, []);
+
     //transition finales
     let transitionGoodEnding = new Choice(
       "Continuer",
@@ -155,8 +158,13 @@ class historyTree {
       null
     );
 
+    let choixForcer = new Choice("Forcer", sceneForcer, null, null);
+
     // scene elle a pas envie
-    let sceneElleAPasEnvie = new Scene("elle a pas envie", [], null, null, []);
+    let sceneElleAPasEnvie = new Scene("elle a pas envie", [], null, null, [
+      choixArreter,
+      choixForcer,
+    ]);
 
     // scene boire beaucoup
     let sceneBoireBeaucoup = new Scene("boire beaucoup", [], null, null, [
